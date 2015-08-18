@@ -2,7 +2,7 @@
 This project utilizes a IR remote, IR receiver, an Arduino and a bit of PC side software to control music playback via the IR remote.
 
 ## Arduino wiring
-![IR Vcc to 5V, IR GND to GND, IR Data to Port 11](img/arduino_wiring.png?raw=true)
+![IR Vcc to 5V, IR GND to GND, IR Data to Port 11](img/arduino_wiring.png?raw=true =150px)
 
 ## Hardware Parts
  - Arduino Uno
