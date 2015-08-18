@@ -15,6 +15,10 @@ const char* IR_VOLUME_DOWN = "FFE01F";
 const char* IR_LOCK = "FF629D";
 const char* IR_REPEAT = "FFFFFFFF";
 
+// Serial connection settings
+const char* port = "COM3";
+const int baud = 9600;
+
 
 std::vector<std::string> split_string(const std::string& str, char delim)
 {
@@ -78,7 +82,6 @@ void handle_command(const std::string& command, std::string& prev_command)
 char read_byte(HANDLE file)
 {
 	char data_byte = '\0';
-	DWORD bytes_read;
 	if (!ReadFile(file, &data_byte, 1, nullptr, nullptr))
 	{
 		std::cerr << "Could not read file";
@@ -111,10 +114,9 @@ std::string read_until_newline(HANDLE file)
 
 int main()
 {
-	std::string port = "COM3";
-	int baud = 9600;
+	
 
-	auto handlePort = CreateFileA(port.c_str(), GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_EXISTING, 0, nullptr);
+	auto handlePort = CreateFileA(port, GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_EXISTING, 0, nullptr);
 	if (handlePort == INVALID_HANDLE_VALUE)
 	{
 		std::cerr << "Error opening port";
